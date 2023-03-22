@@ -22,13 +22,10 @@ public class PostService {
     return repository.getById(id).orElseThrow(NotFoundException::new);
   }
 
-  public Post save(String postContent){
-      return repository.save(postContent);
+  public Post save(Long id, String postContent){
+    return repository.save(id, postContent);
   }
 
-  public Post update(Long id, String postContent){
-    return repository.update(id, postContent);
-  }
 
   public boolean removeById(long id) {
     return repository.removeById(id);

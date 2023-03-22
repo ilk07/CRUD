@@ -31,7 +31,7 @@ public class PostController {
     public void save(Long id, HttpServletRequest request, HttpServletResponse response) throws IOException {
 
         String postBody = request.getReader().lines().collect(Collectors.joining("\n"));
-        final var data = (id == 0) ? service.save(postBody) : service.update(id, postBody);
+        final var data = service.save(id, postBody);
         if(data == null){
             writeJsonResponse(response, gson.toJson("Post " + id + " can't be create or update"));
         } else {
